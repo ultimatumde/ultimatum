@@ -1,15 +1,23 @@
 {
 	"folders": [
 		{
+			"name": "backend",
 			"path": "backend"
 		},
 		{
+			"name": "frontend",
 			"path": "frontend"
 		},
 		{
+			"name": "protocols",
 			"path": "protocols"
 		},
 		{
+			"name": "singe",
+			"path": "singe"
+		},
+		{
+			"name": "ultimatum",
 			"path": "."
 		}
 	]
