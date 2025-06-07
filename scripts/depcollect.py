@@ -38,16 +38,31 @@ match os_name:
     case "nixos":
         import os
         cmds = [
-            ["nix-env", "-iA", *map(lambda x: "nixpkgs." + x, DEPENDENCIES["nix"])],
-            ["nix", "profile", "install", *map(lambda x: "nixpkgs#" + x, DEPENDENCIES["nix"])]
+            ["nix-env", "-iA"],
+            ["nix", "profile", "install"]
         ]
+        worked = False
         for cmd in cmds:
             try:
                 print("Running " + " ".join(cmd))
-                subprocess.run(cmd)
-                break
+                for dep in DEPENDENCIES["nix"]:
+                    try:
+                        print(f"{dep} t1/2 ...", end=" ")
+                        r = subprocess.run(cmd + ["nixpkgs#" + dep], capture_output=False, check=True, text=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                        print("installed", end=" ")
+                    except Exception as e:
+                        try:
+                            print(f"{dep} t2/2 ...", end=" ")
+                            r = subprocess.run(cmd + ["nixpkgs." + dep], capture_output=False, check=True, text=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                            print("installed", end=" ")
+                        except Exception as e:
+                            print(f"exists", end=" ")
             except Exception as e:
                 print(f"command {cmd} failed: {e}")
+        if not worked:
+            print("\nseems i was unable to automatically install every dependency. here's how to add them manually:")
+            print("\n".join(map(lambda x: " - pkgs." + x, DEPENDENCIES["nix"])))
+            exit(1)
     case "debian":
         import os
         subprocess.run(["apt-get", "install", "-y", *DEPENDENCIES["debian"]])

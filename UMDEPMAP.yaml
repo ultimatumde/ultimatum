@@ -1,0 +1,15 @@
+arch:
+  - just
+  - python
+  - python-yaml
+
+nix:
+  - just
+  - python3
+  - python312Packages.pyyaml
+  - python312Packages.pip
+
+debian:
+  - just
+  - python
+  - python3-yaml
