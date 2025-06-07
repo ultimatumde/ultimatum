@@ -1,0 +1,24 @@
+[submodule "backend"]
+    path = backend
+    url = https://github.com/ultimatumde/backend.git
+    branch = main
+
+[submodule "frontend"]
+    path = frontend
+    url = https://github.com/ultimatumde/frontend.git
+    branch = main
+
+[submodule "singe"]
+    path = singe
+    url = https://github.com/ultimatumde/singe.git
+    branch = main
+
+[submodule "buildcommons"]
+    path = buildcommons
+    url = https://github.com/ultimatumde/buildcommons.git
+    branch = main
+
+[submodule "uproto"]
+    path = protocols
+    url = https://github.com/ultimatumde/uproto.git
+    branch = main
