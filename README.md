@@ -1,3 +1,5 @@
+# One of the main devs disappeared. Will be unmaintained for the time being while we find developers.
+
 # Ultimatum (under HEAVY development)
 
 Ultimatum is a *new* kind of Wayland compositor.   
